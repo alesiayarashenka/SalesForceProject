@@ -3,15 +3,15 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import waiters.Waiter;
 
-public class AccountListPage extends ListPage {
+public class ContactListPage extends ListPage {
 
     Waiter waiter = new Waiter();
 
-    public AccountListPage(WebDriver driver) {
+    public ContactListPage(WebDriver driver) {
         super(driver);
     }
 
-    public AccountListPage openPage(String url) {
+    public ContactListPage openPage(String url) {
         waiter.waitForPageLoaded();
         driver.get(url);
         return this;

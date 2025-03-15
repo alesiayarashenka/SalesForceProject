@@ -9,6 +9,7 @@ public class Input {
     String label;
     String INPUT_XPATH = "//*[contains(text(), '%s')]/ancestor::div[contains(@part, 'input-text')]//input";
     String TEXTAREA_XPATH = "//*[contains(text(), '%s')]/ancestor::*[contains(@slot, 'inputField')]//textarea";
+    String INPUT_XPATH_ACCOUNT = "//label[contains(text(),'%s')]/ancestor::lightning-lookup[contains(@class,'slds-form-element')]//input";
 
     public Input(WebDriver driver, String label) {
         this.driver = driver;
@@ -21,5 +22,9 @@ public class Input {
 
     public void writeTextToTextarea(String text) {
         driver.findElement(By.xpath(String.format(TEXTAREA_XPATH, label))).sendKeys(text);
+    }
+
+    public void writeTextInDropdownField(String text) {
+        driver.findElement(By.xpath(String.format(INPUT_XPATH_ACCOUNT, label))).sendKeys(text);
     }
 }
