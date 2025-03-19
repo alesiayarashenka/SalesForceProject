@@ -9,7 +9,6 @@ public class Dropdown {
     String label;
 
     private static final String ACCOUNT_DROPDOWN_XPATH = "//*[contains(text(), '%s')]/ancestor::*[contains(@slot, 'inputField')]//button";
-    //private static final String ACCOUNT_DROPDOWN_OPTION_XPATH = "//*[@class='slds-combobox_container']//lightning-base-combobox-item//*[contains(@title, 'Investor')]";
     private static final String ACCOUNT_DROPDOWN_OPTION_XPATH = "//*[contains(@title, '%s')]";
 
     public Dropdown(WebDriver driver, String label) {

@@ -1,5 +1,6 @@
 package pages;
 
+import objects.Contact;
 import org.openqa.selenium.WebDriver;
 import waiters.Waiter;
 
@@ -15,5 +16,13 @@ public class ContactListPage extends ListPage {
         waiter.waitForPageLoaded();
         driver.get(url);
         return this;
+    }
+
+    public String nameInContactsList(Contact contact){
+        return contact.getContactFirstName() + " " + contact.getContactLastName();
+    }
+
+    public String nameInCard(Contact contact){
+        return contact.getSalutation() + " " + contact.getContactFirstName() + " " + contact.getContactLastName();
     }
 }
