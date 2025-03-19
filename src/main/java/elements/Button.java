@@ -10,6 +10,7 @@ public class Button {
     public Button(WebDriver driver) {
         this.driver = driver;
     }
+
     public void clickButton(WebElement webElement) {
         webElement.click();
     }

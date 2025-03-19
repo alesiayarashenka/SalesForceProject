@@ -3,8 +3,9 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import waiters.Waiter;
 
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
 
     @FindBy(id = "username")
     public WebElement usernameInput;
@@ -14,6 +15,8 @@ public class LoginPage extends BasePage{
 
     @FindBy(id = "Login")
     public WebElement loginButton;
+
+    Waiter waiter = new Waiter();
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -28,7 +31,7 @@ public class LoginPage extends BasePage{
         usernameInput.sendKeys(username);
         passwordInput.sendKeys(password);
         loginButton.click();
+        waiter.waitForPageLoaded();
         return new HomePage(driver);
     }
-
 }
