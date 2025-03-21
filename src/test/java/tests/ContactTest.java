@@ -76,12 +76,12 @@ public class ContactTest extends BaseTest {
                 .openPage(CONTACT_LIST_URL);
         listPage
                 .clickOnAccountName(contact.getContactFirstName());
-        softAssert.assertEquals(listPage.getFieldValueByName("Account Name", account.getAccountName()), account.getAccountName());
-        softAssert.assertEquals(listPage.getFieldValueByName("Name", contact.getContactFirstName()), contactListPage.nameInCard(contact));
-        softAssert.assertEquals(listPage.getFieldValueByName("Phone", contact.getPhone()), contact.getPhone());
-        softAssert.assertEquals(listPage.getFieldValueByName("Description", contact.getDescription()), contact.getDescription());
-        softAssert.assertEquals(listPage.getFieldValueByName("Title", contact.getTitle()), contact.getTitle());
-        softAssert.assertEquals(listPage.getFieldValueByName("Email", contact.getEmail()), contact.getEmail());
+        softAssert.assertEquals(contactListPage.getFieldValueByNameForContact("Account Name", account.getAccountName()), account.getAccountName());
+        softAssert.assertEquals(contactListPage.getFieldValueByNameForContact("Name", contact.getContactFirstName()), contactListPage.nameInCard(contact));
+        softAssert.assertEquals(contactListPage.getFieldValueByNameForContact("Phone", contact.getPhone()), contact.getPhone());
+        softAssert.assertEquals(contactListPage.getFieldValueByNameForContact("Description", contact.getDescription()), contact.getDescription());
+        softAssert.assertEquals(contactListPage.getFieldValueByNameForContact("Title", contact.getTitle()), contact.getTitle());
+        softAssert.assertEquals(contactListPage.getFieldValueByNameForContact("Email", contact.getEmail()), contact.getEmail());
         softAssert.assertAll();
     }
 }

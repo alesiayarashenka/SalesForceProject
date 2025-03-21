@@ -3,12 +3,14 @@ package tests;
 import objects.Account;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.util.Random;
 
 public class AccountTest extends BaseTest {
 
     Random random = new Random();
+    SoftAssert softAssert = new SoftAssert();
 
     @Test
     public void createAccountTest() {
@@ -24,9 +26,10 @@ public class AccountTest extends BaseTest {
                 .openPage(NEW_ACCOUNT_MODAL_URL)
                 .createNewAccount(account);
         accountListPage.openPage(ACCOUNT_LIST_URL);
-        Assert.assertEquals(listPage.getExistAccountName(account.getAccountName()), account.getAccountName());
-        Assert.assertEquals(listPage.getExistPhoneNumberByAccountName(account.getAccountName()), account.getPhone());
-        Assert.assertEquals(listPage.getExistAccountOwnerByAccountName(account.getAccountName()), "ayar");
+        softAssert.assertEquals(listPage.getExistAccountName(account.getAccountName()), account.getAccountName());
+        softAssert.assertEquals(listPage.getExistPhoneNumberByAccountName(account.getAccountName()), account.getPhone());
+        softAssert.assertEquals(listPage.getExistAccountOwnerByAccountName(account.getAccountName()), "ayar");
+        softAssert.assertAll();
     }
 
     @Test
@@ -46,11 +49,12 @@ public class AccountTest extends BaseTest {
                 .openPage(ACCOUNT_LIST_URL);
         listPage.
                 clickOnAccountName(account.getAccountName());
-        Assert.assertEquals(listPage.getFieldValueByName("Account Name", account.getAccountName()), account.getAccountName());
-        Assert.assertEquals(listPage.getFieldValueByName("Website", account.getWebSite()), account.getWebSite());
-        Assert.assertEquals(listPage.getFieldValueByName("Type", account.getType()), account.getType());
-        Assert.assertEquals(listPage.getFieldValueByName("Phone", account.getPhone()), account.getPhone());
-        Assert.assertEquals(listPage.getFieldValueByName("Description", account.getDescription()), account.getDescription());
+        softAssert.assertEquals(accountListPage.getFieldValueByNameForAccount("Account Name", account.getAccountName()), account.getAccountName());
+        softAssert.assertEquals(accountListPage.getFieldValueByNameForAccount("Website", account.getWebSite()), account.getWebSite());
+        softAssert.assertEquals(accountListPage.getFieldValueByNameForAccount("Type", account.getType()), account.getType());
+        softAssert.assertEquals(accountListPage.getFieldValueByNameForAccount("Phone", account.getPhone()), account.getPhone());
+        softAssert.assertEquals(accountListPage.getFieldValueByNameForAccount("Description", account.getDescription()), account.getDescription());
+        softAssert.assertAll();
     }
 }
 

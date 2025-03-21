@@ -1,6 +1,7 @@
 package pages;
 
 import objects.Contact;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import waiters.Waiter;
 
@@ -24,5 +25,9 @@ public class ContactListPage extends ListPage {
 
     public String nameInCard(Contact contact){
         return contact.getSalutation() + " " + contact.getContactFirstName() + " " + contact.getContactLastName();
+    }
+
+    public String getFieldValueByNameForContact(String nameField, String name) {
+        return driver.findElement(By.xpath(String.format(DATA_BY_FIELD_NAME_XPATH, nameField, name))).getText();
     }
 }

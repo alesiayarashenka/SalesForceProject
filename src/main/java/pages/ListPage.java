@@ -40,8 +40,4 @@ public class ListPage extends BasePage {
         waiter.waitForPageLoaded();
         return this;
     }
-
-    public String getFieldValueByName(String nameField, String name) {
-        return driver.findElement(By.xpath(String.format(DATA_BY_FIELD_NAME_XPATH, nameField, name))).getText();
-    }
 }
